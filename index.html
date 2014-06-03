@@ -28,6 +28,29 @@
         }
     }
     </script>
+    <script>
+        document.addEventListener("deviceready", onDeviceReady, false);
+        function onDeviceReady() {
+            //navigator.splashscreen.hide();
+            if (navigator.network.connection.type == Connection.NONE) {
+                networkError()
+            } else {
+                loadApp()
+            }
+        }
+
+        function loadApp() {
+
+            window.location="http://www.ifuturo.net/mds-codex/";
+        }
+
+        function networkError() {
+            navigator.notification.alert('MDS codex requires an internet connection')
+            var $net = document.createElement('div')
+            $net.innerHTML = 'MDS codex requires an internet connection'
+            document.body.appendChild($net)
+        }
+    </script>
 </head>
 <body>
     <span class="loading"></span>
